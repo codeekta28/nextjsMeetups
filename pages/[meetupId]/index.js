@@ -20,7 +20,7 @@ function meetUpDetailPage(props) {
     </>
   );
 }
-// so as we know getStatic page run during build time but these ids are generated dynamically so how would it know for which id it need to pregenerate the page for that in dynamic pages it is necessary to use getStaticPages and it have fallback key whose value if declare as false it means it have define all the dynamic value and if url found any other value can show 404 not found but if it is set to true that means that mostly used valued are defined here but if u find new value try to search it on server side rendering  and if not find show page among famous pages.
+// so as we know getStatic page run during build time but these ids are generated dynamically so how would it know for which id it need to pregenerate the page for that in dynamic pages it is necessary to use getStaticPages and it have fallback key whose value if declare as false it means it have define all the dynamic value and if url found any other value can show 404 not found but if it is set to true that means that mostly used valued are defined here but if u find new value try to search it on server side rendering  and if not find show page among famous pages.Blocking is same as true
 export async function getStaticPaths() {
   const client = await MongoClient.connect(
     "mongodb+srv://92151552:kickassclub1!@cluster0.svnr0.mongodb.net/meetups?retryWrites=true&w=majority"
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   const meetups = await meetupCollection.find({}, { _id: 1 }).toArray();
   client.close();
   return {
-    fallback: false,
+    fallback:"blocking",
     paths: meetups.map((val) => ({ params: { meetupId: val._id.toString() } })),
   };
 }

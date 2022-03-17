@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 
-function newMeetupPage() {
+function NewMeetupPage() {
   const route=useRouter();
   async function meetUpHandler(formDetails) {
     const response = await fetch("/api/new-meetup", {
@@ -29,4 +29,4 @@ function newMeetupPage() {
   );
 }
 
-export default newMeetupPage;
+export default NewMeetupPage;
